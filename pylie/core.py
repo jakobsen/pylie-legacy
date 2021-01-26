@@ -8,6 +8,9 @@ class _LieIntegrator:
     """
 
     def __init__(self, f, y0, h, T, verbose=True, solve_immediately=True):
+        if not isinstance(y0, np.ndarray):
+            raise TypeError("y0 must be a one-dimensional numpy array")
+
         if y0.ndim != 1:
             raise ValueError("y0 must be a one-dimensional numpy array")
         self.f = f
